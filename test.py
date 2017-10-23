@@ -2,6 +2,13 @@ import unittest
 import numpy as np
 
 from decimal import *
+from matrix_multiply import shape
+from Gaussian_Jordan import gj_Solve
+from augmentMatrix import augmentMatrix
+from matrix_multiply import matxMultiply
+from matrix_round import matxRound
+from row_operation import swapRows, scaleRow, addScaledRow
+
 
 class LinearRegressionTestCase(unittest.TestCase):
     """Test for linear regression project"""
@@ -11,7 +18,8 @@ class LinearRegressionTestCase(unittest.TestCase):
         for _ in range(10):
             r,c = np.random.randint(low=1,high=25,size=2)
             matrix = np.random.randint(low=-10,high=10,size=(r,c))
-            self.assertEqual(shape(matrix.tolist()),(r,c),'Wrong answer')
+
+            self.assertEqual(shape(matrix.tolist()), (r, c), 'Wrong answer')
 
 
     def test_matxRound(self):
@@ -40,7 +48,7 @@ class LinearRegressionTestCase(unittest.TestCase):
             matrix = np.random.random((r,c))
 
             mat = matrix.tolist()
-            t = np.array(transpose(mat))
+            t = np.array(np.transpose(mat))
 
             self.assertEqual(t.shape,(c,r),"Expected shape{}, but got shape{}".format((c,r),t.shape))
             self.assertTrue((matrix.T == t).all(),'Wrong answer')

@@ -17,3 +17,9 @@ def identity_matrix(n):
     return I
 print identity_matrix(4)
 
+# 使用len直接获取矩阵的行和列数
+
+def shape(M):
+    i = len(M)
+    j = len(M[0])
+    return i,j
